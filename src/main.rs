@@ -4,7 +4,6 @@ use std::process::ExitCode;
 use clap::Parser;
 use rum::{Options, remove_paths};
 
-/// A fast `rm` replacement.
 #[derive(Debug, Parser)]
 #[command(name = "rum", version, about)]
 struct Cli {
