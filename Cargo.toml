@@ -1,0 +1,71 @@
+[package]
+name = "rum"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.93"
+description = "A fast rm replacement written in Rust"
+authors = ["Matthew Mckee <matthewmckee04@yahoo.co.uk>"]
+license = "MIT"
+repository = "https://github.com/MatthewMckee4/rum"
+
+[lib]
+name = "rum"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rum"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.6", features = ["derive", "wrap_help"] }
+crossbeam-channel = "0.5"
+rayon = "1.11"
+
+[target.'cfg(unix)'.dependencies]
+rustix = { version = "1.1", features = ["fs"] }
+
+[dev-dependencies]
+assert_cmd = "2.0"
+assert_fs = "1.1"
+criterion = { version = "0.7", features = ["html_reports"] }
+dunce = "1.0"
+insta = { version = "1.47", features = ["filters"] }
+regex = "1.12"
+tempfile = "3.25"
+
+[[test]]
+name = "it"
+path = "tests/it/main.rs"
+
+[[bench]]
+name = "delete"
+harness = false
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+panic = "abort"
+strip = true
+
+[profile.bench]
+lto = "fat"
+codegen-units = 1
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+correctness = { level = "warn", priority = -1 }
+suspicious = { level = "warn", priority = -1 }
+style = { level = "warn", priority = -1 }
+complexity = { level = "warn", priority = -1 }
+perf = { level = "warn", priority = -1 }
+
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+must_use_candidate = "allow"
+module_name_repetitions = "allow"

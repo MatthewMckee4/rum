@@ -1,0 +1,34 @@
+name: Bug report
+description: Report an error or unexpected behavior
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report an issue!
+
+        **Before reporting, please search through [existing issues](https://github.com/MatthewMckee4/rum/issues?q=is:issue+is:open+label:bug) (including [closed](https://github.com/MatthewMckee4/rum/issues?q=is:issue%20state:closed%20label:bug)).**
+
+  - type: textarea
+    attributes:
+      label: Summary
+      description: |
+        A clear and concise description of the bug, including a minimal reproducible example.
+
+        Be sure to include the command you invoked (e.g., `rum -rf some/dir`).
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Version
+      description: What version of rum are you using? (see `rum --version`)
+      placeholder: e.g., rum 0.1.0
+    validations:
+      required: false
+
+  - type: input
+    attributes:
+      label: Platform
+      description: Operating system and filesystem (e.g. macOS 14 / APFS, Ubuntu 24.04 / ext4).
+    validations:
+      required: false

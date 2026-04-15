@@ -1,0 +1,18 @@
+name: Question
+description: Ask a question about rum
+labels: ["question"]
+body:
+  - type: textarea
+    attributes:
+      label: Question
+      description: Describe your question in detail.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Version
+      description: What version of rum are you using? (see `rum --version`)
+      placeholder: e.g., rum 0.1.0
+    validations:
+      required: false
